@@ -13,6 +13,12 @@
 		211C6BC71E00E25200BE3562 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 211C6BC51E00E25200BE3562 /* Main.storyboard */; };
 		211C6BC91E00E25200BE3562 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 211C6BC81E00E25200BE3562 /* Assets.xcassets */; };
 		211C6BCC1E00E25200BE3562 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 211C6BCA1E00E25200BE3562 /* LaunchScreen.storyboard */; };
+		211C6BD41E02FD4800BE3562 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C6BD31E02FD4800BE3562 /* LocationDetailsViewController.swift */; };
+		211C6BD61E03094400BE3562 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C6BD51E03094400BE3562 /* CategoryPickerViewController.swift */; };
+		211C6BE41E034B0A00BE3562 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 211C6BE21E034B0A00BE3562 /* DataModel.xcdatamodeld */; };
+		211C6BE61E034F1500BE3562 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C6BE51E034F1500BE3562 /* Functions.swift */; };
+		218BC8511E03570E00949045 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218BC84F1E03570E00949045 /* Location+CoreDataClass.swift */; };
+		218BC8521E03570E00949045 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218BC8501E03570E00949045 /* Location+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		211C6BC81E00E25200BE3562 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		211C6BCB1E00E25200BE3562 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		211C6BCD1E00E25200BE3562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		211C6BD31E02FD4800BE3562 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
+		211C6BD51E03094400BE3562 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		211C6BE31E034B0A00BE3562 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		211C6BE51E034F1500BE3562 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		218BC84F1E03570E00949045 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "Location Journal/Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		218BC8501E03570E00949045 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "Location Journal/Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +52,9 @@
 		211C6BB31E00E25100BE3562 = {
 			isa = PBXGroup;
 			children = (
+				218BC84F1E03570E00949045 /* Location+CoreDataClass.swift */,
+				218BC8501E03570E00949045 /* Location+CoreDataProperties.swift */,
+				211C6BE21E034B0A00BE3562 /* DataModel.xcdatamodeld */,
 				211C6BBE1E00E25200BE3562 /* Location Journal */,
 				211C6BBD1E00E25200BE3562 /* Products */,
 			);
@@ -60,6 +75,9 @@
 				211C6BC11E00E25200BE3562 /* CurrentLocationFirstViewController.swift */,
 				211C6BC31E00E25200BE3562 /* SecondViewController.swift */,
 				211C6BC51E00E25200BE3562 /* Main.storyboard */,
+				211C6BE51E034F1500BE3562 /* Functions.swift */,
+				211C6BD51E03094400BE3562 /* CategoryPickerViewController.swift */,
+				211C6BD31E02FD4800BE3562 /* LocationDetailsViewController.swift */,
 				211C6BC81E00E25200BE3562 /* Assets.xcassets */,
 				211C6BCA1E00E25200BE3562 /* LaunchScreen.storyboard */,
 				211C6BCD1E00E25200BE3562 /* Info.plist */,
@@ -140,8 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211C6BE41E034B0A00BE3562 /* DataModel.xcdatamodeld in Sources */,
+				211C6BE61E034F1500BE3562 /* Functions.swift in Sources */,
+				211C6BD41E02FD4800BE3562 /* LocationDetailsViewController.swift in Sources */,
 				211C6BC41E00E25200BE3562 /* SecondViewController.swift in Sources */,
+				218BC8511E03570E00949045 /* Location+CoreDataClass.swift in Sources */,
+				218BC8521E03570E00949045 /* Location+CoreDataProperties.swift in Sources */,
 				211C6BC01E00E25200BE3562 /* AppDelegate.swift in Sources */,
+				211C6BD61E03094400BE3562 /* CategoryPickerViewController.swift in Sources */,
 				211C6BC21E00E25200BE3562 /* CurrentLocationFirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,8 +330,22 @@
 				211C6BD21E00E25200BE3562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		211C6BE21E034B0A00BE3562 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				211C6BE31E034B0A00BE3562 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 211C6BE31E034B0A00BE3562 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 211C6BB41E00E25100BE3562 /* Project object */;
 }

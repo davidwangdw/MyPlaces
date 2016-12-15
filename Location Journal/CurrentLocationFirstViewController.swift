@@ -8,13 +8,13 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var getButton: UIButton!
     
@@ -24,6 +24,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     var updatingLocation = false
     var lastLocationError: Error?
+    
+    var managedObjectContext: NSManagedObjectContext!
+    
     
     @IBAction func getLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
@@ -68,7 +71,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }  else {
             latitudeLabel.text = ""
             longitudeLabel.text = ""
-            addressLabel.text = ""
             tagButton.isHidden = true
             // The new code starts here:
             let statusMessage: String
@@ -127,6 +129,33 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    func string(from placemark: CLPlacemark) -> String {
+        // 1
+        var line1 = ""
+        // 2
+        if let s = placemark.subThoroughfare {
+            line1 += s + " "
+        }
+        // 3
+        if let s = placemark.thoroughfare {
+            line1 += s
+        }
+        // 4
+        var line2 = ""
+        if let s = placemark.locality {
+            line2 += s + " "
+        }
+        if let s = placemark.administrativeArea {
+            line2 += s + " "
+        }
+        if let s = placemark.postalCode {
+            line2 += s
+        }
+        
+        // 5
+        return line1 + "\n" + line2
+    }
+    
     //MARK: - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager,
@@ -145,30 +174,41 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                          didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
         print("didUpdateLocations \(newLocation)")
-        // 1
+        // cached result
         if newLocation.timestamp.timeIntervalSinceNow < -5 {
             return
         }
         
         
-        // 2
         if newLocation.horizontalAccuracy < 0 {
             return
         }
         // 3
-        if location == nil ||
-            location!.horizontalAccuracy > newLocation.horizontalAccuracy {
+        if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
             // 4
             lastLocationError = nil
             location = newLocation
             updateLabels()
             // 5
-            if newLocation.horizontalAccuracy <=
-                locationManager.desiredAccuracy {
+            if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
                 print("*** We're done!")
                 stopLocationManager()
                 configureGetButton()
             }
+            
+
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TagLocation" {
+            let navigationController = segue.destination
+                as! UINavigationController
+            let controller = navigationController.topViewController
+                as! LocationDetailsViewController
+            controller.coordinate = location!.coordinate
+            controller.managedObjectContext = managedObjectContext
         }
     }
 }
