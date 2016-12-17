@@ -21,11 +21,30 @@ class LocationDetailsViewController: UITableViewController {
     
     var managedObjectContext: NSManagedObjectContext!
     
+    var locationToEdit: Location? {
+        
+        didSet {
+            if let location = locationToEdit {
+                descriptionText = location.locationDescription
+                categoryName = location.category
+                date = location.date
+
+                coordinate = CLLocationCoordinate2DMake(
+                location.latitude, location.longitude)
+                placemark = location.placemark
+            }
+        }
+    }
+    
+    
+    var descriptionText = ""
+    
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     var categoryName = "No Category"
     
@@ -40,18 +59,26 @@ class LocationDetailsViewController: UITableViewController {
     
     
     @IBAction func done() {
-        // 1
-        let location = Location(context: managedObjectContext)
-        // 2
+        //
+        let location: Location
+        if let temp = locationToEdit {
+            location = temp
+        } else {
+            location = Location(context: managedObjectContext)
+        }
+        //
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
         location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
         location.date = date
-        // 3
+        location.placemark = placemark
+        // 
         do {
             try managedObjectContext.save()
-            print("Data Saved")
+            afterDelay(0.6) {
+                self.dismiss(animated: true, completion: nil)
+            }
         } catch {
             fatalError("Error: \(error)")
         }
@@ -62,10 +89,20 @@ class LocationDetailsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionTextView.text = ""
+        
+        if let location = locationToEdit {
+            title = "Edit Location"
+        }
+        descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
         latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
         longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
+        
+        if let placemark = placemark {
+            addressLabel.text = string(from: placemark)
+        } else {
+            addressLabel.text = "No Address Found"
+        }
         dateLabel.text = format(date: date)
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -140,6 +177,23 @@ class LocationDetailsViewController: UITableViewController {
      if indexPath.section == 0 && indexPath.row == 0 {
      descriptionTextView.becomeFirstResponder()
      }
+        
+        func tableView(_ tableView: UITableView,
+                                heightForRowAt indexPath: IndexPath) -> CGFloat {
+            if indexPath.section == 0 && indexPath.row == 0 {
+                return 88
+            } else if indexPath.section == 2 && indexPath.row == 2 {
+                addressLabel.frame.size = CGSize(
+                    width: view.bounds.size.width - 115,
+                    height: 10000)
+                addressLabel.sizeToFit()
+                addressLabel.frame.origin.x = view.bounds.size.width -
+                    addressLabel.frame.size.width - 15
+                return addressLabel.frame.size.height + 20
+            } else {
+                return 44
+            }
+        }
      
      
     // In a storyboard-based application, you will often want to do a little preparation before navigation

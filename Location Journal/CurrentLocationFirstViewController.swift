@@ -15,8 +15,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var getButton: UIButton!
+    
+    var performingReverseGeocoding = false
     
     var location: CLLocation?
     
@@ -26,6 +29,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var lastLocationError: Error?
     
     var managedObjectContext: NSManagedObjectContext!
+    
+    let geocoder = CLGeocoder()
+    var placemark: CLPlacemark?
+    var perfomingReverseGeocoding = false
+    var lastGeocodingError: Error?
     
     
     @IBAction func getLocation() {
@@ -68,11 +76,21 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
             tagButton.isHidden = false
             messageLabel.text = ""
+            if let placemark = placemark {
+                addressLabel.text = string(from: placemark)
+            } else if performingReverseGeocoding {
+                addressLabel.text = "Searching for Address..."
+            } else if lastGeocodingError != nil {
+                addressLabel.text = "Error Finding Address"
+            } else {
+                addressLabel.text = "No Address Found"
+            }
         }  else {
             latitudeLabel.text = ""
             longitudeLabel.text = ""
             tagButton.isHidden = true
-            // The new code starts here:
+            addressLabel.text = ""
+            
             let statusMessage: String
             if let error = lastLocationError as? NSError {
                 if error.domain == kCLErrorDomain &&
@@ -183,31 +201,50 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if newLocation.horizontalAccuracy < 0 {
             return
         }
-        // 3
+        //
         if location == nil || location!.horizontalAccuracy > newLocation.horizontalAccuracy {
-            // 4
+            //
             lastLocationError = nil
             location = newLocation
             updateLabels()
-            // 5
+            //
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
                 print("*** We're done!")
                 stopLocationManager()
                 configureGetButton()
             }
             
+            if !performingReverseGeocoding {
+                print("*** Going to geocode")
+                performingReverseGeocoding = true
+                geocoder.reverseGeocodeLocation(newLocation, completionHandler: {
+                    placemarks, error in
+                    print("*** Found placemarks: \(placemarks), error: \(error)")
+                    
+                    self.lastGeocodingError = error
+                    if error == nil, let p = placemarks, !p.isEmpty {
+                        self.placemark = p.last!
+                    } else {
+                        self.placemark = nil
+                    }
+                    self.performingReverseGeocoding = false
+                    self.updateLabels()
+                })
+            }
+            
 
         }
+        
+        
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TagLocation" {
-            let navigationController = segue.destination
-                as! UINavigationController
-            let controller = navigationController.topViewController
-                as! LocationDetailsViewController
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! LocationDetailsViewController
             controller.coordinate = location!.coordinate
+            controller.placemark = placemark
             controller.managedObjectContext = managedObjectContext
         }
     }

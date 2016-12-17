@@ -17,3 +17,7 @@ func fatalCoreDataError(_ error: Error) {
         name: MyManagedObjectContextSaveDidFailNotification, object: nil)
 }
 
+func afterDelay(_ seconds: Double, closure: @escaping () -> ()) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + seconds,
+                                  execute: closure)
+}
