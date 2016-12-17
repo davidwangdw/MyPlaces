@@ -16,9 +16,9 @@ class LocationsViewController: UITableViewController {
     
     var managedObjectContext: NSManagedObjectContext!
     
-
-    //old (replace code below with this if it doesnt work
     var locations = [Location]()
+    
+    //below code is for fetched results controller
     
     /*lazy var fetchedResultsController:
         NSFetchedResultsController<Location> = {
@@ -26,49 +26,72 @@ class LocationsViewController: UITableViewController {
             let entity = Location.entity()
             fetchRequest.entity = entity
             
-            let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
+            let sortDescriptor1 = NSSortDescriptor(key: "category", ascending: true)
+            let sortDescriptor2 = NSSortDescriptor(key: "date", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
             
             fetchRequest.fetchBatchSize = 20
             
             let fetchedResultsController = NSFetchedResultsController(
                 fetchRequest: fetchRequest,
                 managedObjectContext: self.managedObjectContext,
-                sectionNameKeyPath: nil,
+                sectionNameKeyPath: "category",
                 cacheName: "Locations")
             
             fetchedResultsController.delegate = self
             return fetchedResultsController
-    }()*/
+    }()
+     
+     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     let sectionInfo = fetchedResultsController.sections![section]
+     return sectionInfo.numberOfObjects
+     }
+     
+     override func numberOfSections(in tableView: UITableView) -> Int {
+     return fetchedResultsController.sections!.count
+     }
+     
+     override func tableView(_ tableView: UITableView,
+     titleForHeaderInSection section: Int) -> String? {
+     let sectionInfo = fetchedResultsController.sections![section]
+     return sectionInfo.name
+     }
+     
+     override func tableView(_ tableView: UITableView,
+     cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCell(
+     withIdentifier: "LocationCell", for: indexPath) as! LocationCell
+     let location = fetchedResultsController.object(at: indexPath)
+     cell.configure(for: location)
+     
+     return cell
+     }
+     
+     override func viewDidLoad() {
+     super.viewDidLoad()
+     navigationItem.rightBarButtonItem = editButtonItem
+     performFetch()
+     }
+     
+     func performFetch() {
+     do {
+     try fetchedResultsController.performFetch()
+     } catch {
+     fatalCoreDataError(error)
+     }
+     }
+     
+     deinit {
+     fetchedResultsController.delegate = nil
+     }
+     
+     */
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
     
-    //attempt to make a second class
-    /*override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "LocationCell", for: indexPath) as! LocationCell
-        let location = locations[indexPath.row]
-        cell.configure(for: location)
-        return cell
-    }*/
-    
-    /*override func tableView(_ tableView: UITableView,
-                            numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
-    }*/
-    
-    /*override func tableView(_ tableView: UITableView,
-                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
-        let location = fetchedResultsController.object(at: indexPath)
-        cell.configure(for: location)
-        
-        return cell
-    }*/
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,22 +139,7 @@ class LocationsViewController: UITableViewController {
         }
     }
     
-    /*override func viewDidLoad() {
-        super.viewDidLoad()
-        performFetch()
-    }*/
     
-    /*func performFetch() {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalCoreDataError(error)
-        }
-    }
-    
-    deinit {
-        fetchedResultsController.delegate = nil
-    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

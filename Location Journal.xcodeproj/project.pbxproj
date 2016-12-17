@@ -78,18 +78,18 @@
 			isa = PBXGroup;
 			children = (
 				211C6BBF1E00E25200BE3562 /* AppDelegate.swift */,
-				211C6BC11E00E25200BE3562 /* CurrentLocationFirstViewController.swift */,
-				211C6BC31E00E25200BE3562 /* SecondViewController.swift */,
-				211C6BC51E00E25200BE3562 /* Main.storyboard */,
-				218BC8551E03664D00949045 /* LocationCell.swift */,
-				218BC8531E035DDD00949045 /* LocationsViewController.swift */,
-				211C6BE51E034F1500BE3562 /* Functions.swift */,
-				211C6BD51E03094400BE3562 /* CategoryPickerViewController.swift */,
-				211C6BD31E02FD4800BE3562 /* LocationDetailsViewController.swift */,
-				217C7DE21E05E24900C6807A /* HudView.swift */,
 				211C6BC81E00E25200BE3562 /* Assets.xcassets */,
-				211C6BCA1E00E25200BE3562 /* LaunchScreen.storyboard */,
+				211C6BD51E03094400BE3562 /* CategoryPickerViewController.swift */,
+				211C6BC11E00E25200BE3562 /* CurrentLocationFirstViewController.swift */,
+				211C6BE51E034F1500BE3562 /* Functions.swift */,
+				217C7DE21E05E24900C6807A /* HudView.swift */,
 				211C6BCD1E00E25200BE3562 /* Info.plist */,
+				211C6BCA1E00E25200BE3562 /* LaunchScreen.storyboard */,
+				218BC8551E03664D00949045 /* LocationCell.swift */,
+				211C6BD31E02FD4800BE3562 /* LocationDetailsViewController.swift */,
+				218BC8531E035DDD00949045 /* LocationsViewController.swift */,
+				211C6BC51E00E25200BE3562 /* Main.storyboard */,
+				211C6BC31E00E25200BE3562 /* SecondViewController.swift */,
 			);
 			path = "Location Journal";
 			sourceTree = "<group>";

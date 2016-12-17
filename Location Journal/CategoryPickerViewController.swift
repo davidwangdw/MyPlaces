@@ -11,16 +11,8 @@ class CategoryPickerViewController: UITableViewController {
     var selectedCategoryName = ""
     let categories = [
         "No Category",
-        "Apple Store",
-        "Bar",
-        "Bookstore",
-        "Club",
-        "Grocery Store",
-        "Historic Building",
-        "House",
-        "Icecream Vendor",
-        "Landmark",
-        "Park"]
+        "Photography Spot",
+        "Come Back Later"]
     var selectedIndexPath = IndexPath()
     override func viewDidLoad() {
         super.viewDidLoad()

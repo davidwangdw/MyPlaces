@@ -128,14 +128,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OCE-Cr-WHa">
-                                                    <rect key="frame" x="15" y="12" width="71" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="71" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kE4-B1-EfO">
-                                                    <rect key="frame" x="241" y="12" width="44" height="21"/>
+                                                    <rect key="frame" x="241" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -143,6 +143,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VEh-9q-DZM" kind="push" identifier="PickCategory" id="Z84-uW-SqF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -177,14 +180,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Khn-Oh-0XW">
-                                                    <rect key="frame" x="15" y="12" width="63" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="63" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ywH-EG-2HS">
-                                                    <rect key="frame" x="261" y="12" width="44" height="21"/>
+                                                    <rect key="frame" x="261" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -201,14 +204,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YjA-3A-aUg">
-                                                    <rect key="frame" x="15" y="12" width="77" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="77" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="62p-Bz-59n">
-                                                    <rect key="frame" x="261" y="12" width="44" height="21"/>
+                                                    <rect key="frame" x="261" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -249,14 +252,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aZb-91-ECE">
-                                                    <rect key="frame" x="15" y="12" width="36" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="36" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZtP-iv-P1a">
-                                                    <rect key="frame" x="261" y="12" width="44" height="21"/>
+                                                    <rect key="frame" x="261" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -301,17 +304,17 @@
         <!--Category Picker View Controller-->
         <scene sceneID="1wL-LB-Dkj">
             <objects>
-                <tableViewController id="VEh-9q-DZM" customClass="CategoryPickerViewController" customModule="Location_Journal" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="VEh-9q-DZM" customClass="CategoryPickerViewController" customModule="Location_Journal" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fCx-K2-qcU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="PvQ-LU-hoL" style="IBUITableViewCellStyleDefault" id="H6d-Y8-9TH">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="PvQ-LU-hoL" style="IBUITableViewCellStyleDefault" id="H6d-Y8-9TH">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H6d-Y8-9TH" id="TJS-15-1S7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PvQ-LU-hoL">
@@ -324,7 +327,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="sft-dm-NDK" kind="unwind" identifier="PickedCategory" unwindAction="categoryPickerDidPickCategory:" id="lKK-hO-mD6"/>
+                                    <segue destination="sft-dm-NDK" kind="unwind" identifier="PickedCategory" unwindAction="categoryPickerDidPickCategory:" id="ddg-VY-brI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -338,7 +341,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8no-lV-Q5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sft-dm-NDK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="-857"/>
+            <point key="canvasLocation" x="2599" y="52"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -452,6 +455,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="79d-4R-1Sh"/>
+        <segue reference="oRr-Fw-2fj"/>
     </inferredMetricsTieBreakers>
 </document>
