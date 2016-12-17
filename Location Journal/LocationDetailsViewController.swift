@@ -60,6 +60,9 @@ class LocationDetailsViewController: UITableViewController {
     
     @IBAction func done() {
         //
+        let hudView = HudView.hud(inView: navigationController!.view, animated: true)
+        hudView.text = "Saved"
+        
         let location: Location
         if let temp = locationToEdit {
             location = temp
@@ -82,6 +85,7 @@ class LocationDetailsViewController: UITableViewController {
         } catch {
             fatalError("Error: \(error)")
         }
+        
     }
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
