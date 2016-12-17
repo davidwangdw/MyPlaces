@@ -18,8 +18,10 @@
 		211C6BE41E034B0A00BE3562 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 211C6BE21E034B0A00BE3562 /* DataModel.xcdatamodeld */; };
 		211C6BE61E034F1500BE3562 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C6BE51E034F1500BE3562 /* Functions.swift */; };
 		217C7DE31E05E24900C6807A /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C7DE21E05E24900C6807A /* HudView.swift */; };
-		218BC8511E03570E00949045 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218BC84F1E03570E00949045 /* Location+CoreDataClass.swift */; };
-		218BC8521E03570E00949045 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218BC8501E03570E00949045 /* Location+CoreDataProperties.swift */; };
+		217C7DE61E05FA3400C6807A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217C7DE51E05FA3400C6807A /* MapKit.framework */; };
+		217C7DE81E05FA5600C6807A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C7DE71E05FA5600C6807A /* MapViewController.swift */; };
+		217C7DEB1E05FDEE00C6807A /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C7DE91E05FDEE00C6807A /* Location+CoreDataClass.swift */; };
+		217C7DEC1E05FDEE00C6807A /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C7DEA1E05FDEE00C6807A /* Location+CoreDataProperties.swift */; };
 		218BC8541E035DDD00949045 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218BC8531E035DDD00949045 /* LocationsViewController.swift */; };
 		218BC8561E03664D00949045 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218BC8551E03664D00949045 /* LocationCell.swift */; };
 /* End PBXBuildFile section */
@@ -38,8 +40,10 @@
 		211C6BE31E034B0A00BE3562 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		211C6BE51E034F1500BE3562 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		217C7DE21E05E24900C6807A /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
-		218BC84F1E03570E00949045 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "Location Journal/Location+CoreDataClass.swift"; sourceTree = "<group>"; };
-		218BC8501E03570E00949045 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "Location Journal/Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		217C7DE51E05FA3400C6807A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		217C7DE71E05FA5600C6807A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ../MapViewController.swift; sourceTree = "<group>"; };
+		217C7DE91E05FDEE00C6807A /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "../Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		217C7DEA1E05FDEE00C6807A /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		218BC8531E035DDD00949045 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		218BC8551E03664D00949045 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217C7DE61E05FA3400C6807A /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,11 +63,9 @@
 		211C6BB31E00E25100BE3562 = {
 			isa = PBXGroup;
 			children = (
-				218BC84F1E03570E00949045 /* Location+CoreDataClass.swift */,
-				218BC8501E03570E00949045 /* Location+CoreDataProperties.swift */,
-				211C6BE21E034B0A00BE3562 /* DataModel.xcdatamodeld */,
 				211C6BBE1E00E25200BE3562 /* Location Journal */,
 				211C6BBD1E00E25200BE3562 /* Products */,
+				217C7DE41E05FA3400C6807A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,17 +84,29 @@
 				211C6BC81E00E25200BE3562 /* Assets.xcassets */,
 				211C6BD51E03094400BE3562 /* CategoryPickerViewController.swift */,
 				211C6BC11E00E25200BE3562 /* CurrentLocationFirstViewController.swift */,
+				211C6BE21E034B0A00BE3562 /* DataModel.xcdatamodeld */,
 				211C6BE51E034F1500BE3562 /* Functions.swift */,
 				217C7DE21E05E24900C6807A /* HudView.swift */,
 				211C6BCD1E00E25200BE3562 /* Info.plist */,
 				211C6BCA1E00E25200BE3562 /* LaunchScreen.storyboard */,
+				217C7DE91E05FDEE00C6807A /* Location+CoreDataClass.swift */,
+				217C7DEA1E05FDEE00C6807A /* Location+CoreDataProperties.swift */,
 				218BC8551E03664D00949045 /* LocationCell.swift */,
 				211C6BD31E02FD4800BE3562 /* LocationDetailsViewController.swift */,
 				218BC8531E035DDD00949045 /* LocationsViewController.swift */,
 				211C6BC51E00E25200BE3562 /* Main.storyboard */,
+				217C7DE71E05FA5600C6807A /* MapViewController.swift */,
 				211C6BC31E00E25200BE3562 /* SecondViewController.swift */,
 			);
 			path = "Location Journal";
+			sourceTree = "<group>";
+		};
+		217C7DE41E05FA3400C6807A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				217C7DE51E05FA3400C6807A /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +143,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 98YT4HPVK9;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -167,14 +187,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217C7DEB1E05FDEE00C6807A /* Location+CoreDataClass.swift in Sources */,
 				211C6BE41E034B0A00BE3562 /* DataModel.xcdatamodeld in Sources */,
 				218BC8541E035DDD00949045 /* LocationsViewController.swift in Sources */,
 				211C6BE61E034F1500BE3562 /* Functions.swift in Sources */,
+				217C7DEC1E05FDEE00C6807A /* Location+CoreDataProperties.swift in Sources */,
 				211C6BD41E02FD4800BE3562 /* LocationDetailsViewController.swift in Sources */,
 				211C6BC41E00E25200BE3562 /* SecondViewController.swift in Sources */,
-				218BC8511E03570E00949045 /* Location+CoreDataClass.swift in Sources */,
+				217C7DE81E05FA5600C6807A /* MapViewController.swift in Sources */,
 				218BC8561E03664D00949045 /* LocationCell.swift in Sources */,
-				218BC8521E03570E00949045 /* Location+CoreDataProperties.swift in Sources */,
 				217C7DE31E05E24900C6807A /* HudView.swift in Sources */,
 				211C6BC01E00E25200BE3562 /* AppDelegate.swift in Sources */,
 				211C6BD61E03094400BE3562 /* CategoryPickerViewController.swift in Sources */,
@@ -353,7 +374,8 @@
 				211C6BE31E034B0A00BE3562 /* DataModel.xcdatamodel */,
 			);
 			currentVersion = 211C6BE31E034B0A00BE3562 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
+			name = DataModel.xcdatamodeld;
+			path = ../DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

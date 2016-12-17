@@ -64,6 +64,7 @@ class LocationDetailsViewController: UITableViewController {
         hudView.text = "Saved"
         
         let location: Location
+        
         if let temp = locationToEdit {
             location = temp
         } else {
@@ -182,28 +183,30 @@ class LocationDetailsViewController: UITableViewController {
      descriptionTextView.becomeFirstResponder()
      }
         
-        func tableView(_ tableView: UITableView,
-                                heightForRowAt indexPath: IndexPath) -> CGFloat {
-            if indexPath.section == 0 && indexPath.row == 0 {
-                return 88
-            } else if indexPath.section == 2 && indexPath.row == 2 {
-                addressLabel.frame.size = CGSize(
-                    width: view.bounds.size.width - 115,
-                    height: 10000)
-                addressLabel.sizeToFit()
-                addressLabel.frame.origin.x = view.bounds.size.width -
-                    addressLabel.frame.size.width - 15
-                return addressLabel.frame.size.height + 20
-            } else {
-                return 44
-            }
-        }
+        
      
      
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return 88
+        } else if indexPath.section == 2 && indexPath.row == 2 {
+            addressLabel.frame.size = CGSize(
+                width: view.bounds.size.width - 115,
+                height: 10000)
+            addressLabel.sizeToFit()
+            addressLabel.frame.origin.x = view.bounds.size.width -
+                addressLabel.frame.size.width - 15
+            return addressLabel.frame.size.height + 20
+        } else {
+            return 44
+        }
     }
 
 }
