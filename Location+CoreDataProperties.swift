@@ -13,6 +13,7 @@ import CoreLocation
 
 
 extension Location {
+    
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Location> {
         return NSFetchRequest<Location>(entityName: "Location");
@@ -24,5 +25,7 @@ extension Location {
     @NSManaged public var locationDescription: String
     @NSManaged public var longitude: Double
     @NSManaged public var placemark: CLPlacemark?
+    
+    @NSManaged public var photoID: NSNumber?
 
 }

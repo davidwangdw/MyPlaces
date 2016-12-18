@@ -81,6 +81,7 @@ class LocationDetailsViewController: UITableViewController {
             location = temp
         } else {
             location = Location(context: managedObjectContext)
+            location.photoID = nil
         }
         //
         location.locationDescription = descriptionTextView.text
@@ -90,6 +91,23 @@ class LocationDetailsViewController: UITableViewController {
         location.date = date
         location.placemark = placemark
         // 
+        
+        if let image = image {
+            // 1
+            if !location.hasPhoto {
+                location.photoID = Location.nextPhotoID() as NSNumber
+            }
+            // 2
+            if let data = UIImageJPEGRepresentation(image, 0.5) {
+                // 3
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        }
+        
         do {
             try managedObjectContext.save()
             afterDelay(0.6) {
@@ -109,7 +127,14 @@ class LocationDetailsViewController: UITableViewController {
         
         if let location = locationToEdit {
             title = "Edit Location"
+            if location.hasPhoto {
+                if let theImage = location.photoImage {
+                    show(image: theImage)
+                }
+
+            }
         }
+ 
         descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
         latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
@@ -226,6 +251,32 @@ class LocationDetailsViewController: UITableViewController {
             return 44
         }
     }
+    
+    //disable screen in background
+    
+    var observer: Any!
+    
+    func listenForBackgroundNotification() {
+    observer = NotificationCenter.default.addObserver(
+    forName: Notification.Name.UIApplicationDidEnterBackground,
+    object: nil, queue: OperationQueue.main) {
+    [weak self] _ in
+    
+    if let strongSelf = self {
+    if strongSelf.presentedViewController != nil {
+    strongSelf.dismiss(animated: false, completion: nil)
+    }
+    strongSelf.descriptionTextView.resignFirstResponder()
+    }
+    }
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
+    
+    
+    
 }
 
 extension LocationDetailsViewController:
