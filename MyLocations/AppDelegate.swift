@@ -11,6 +11,16 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    func customizeAppearance() {
+        
+        let tintColor = UIColor(red: 89/255.0, green: 194/255.0, blue: 230/255.0, alpha: 1.0)
+        //a lovely shade of light blue
+        
+        UINavigationBar.appearance().tintColor = tintColor
+            
+        UITabBar.appearance().tintColor = tintColor
+    }
 
     var window: UIWindow?
     
@@ -28,10 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectContext: NSManagedObjectContext = self.persistentContainer.viewContext
 
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions:
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?)
         -> Bool {
+            customizeAppearance()
             let tabBarController = window!.rootViewController
                 as! UITabBarController
             if let tabBarViewControllers = tabBarController.viewControllers {

@@ -2,21 +2,24 @@
 //  FirstViewController.swift
 //  MyLocations
 //
-//  Created by Matthijs on 19/07/2016.
-//  Copyright © 2016 Razeware. All rights reserved.
-//
 
 import UIKit
 import CoreLocation
 import CoreData
+import QuartzCore
 
-class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
+class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate, CAAnimationDelegate {
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var latitudeLabel: UILabel!
   @IBOutlet weak var longitudeLabel: UILabel!
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var tagButton: UIButton!
   @IBOutlet weak var getButton: UIButton!
+    
+    @IBOutlet weak var containerView: UIView!
+    
+  @IBOutlet weak var latitudeTextLabel: UILabel!
+  @IBOutlet weak var longitudeTextLabel: UILabel!
   
   let locationManager = CLLocationManager()
   
@@ -54,6 +57,94 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
       controller.managedObjectContext = managedObjectContext
     }
   }
+    
+    // MARK: - Logo View
+    func showLogoView() {
+        if !logoVisible {
+            logoVisible = true
+            containerView.isHidden = true
+            view.addSubview(logoButton)
+        }
+    }
+    
+    func hideLogoView() {
+        
+        
+        /*logoVisible = false
+        containerView.isHidden = false
+        logoButton.removeFromSuperview()*/
+
+        // to animate logo
+        
+        if !logoVisible { return }
+        
+        logoVisible = false
+        containerView.isHidden = false
+        //containerView.center.x = view.bounds.size.width * 2
+        //containerView.center.y = 40 + containerView.bounds.size.height / 2
+        
+        //let centerX = view.bounds.midX
+        
+        /*let panelMover = CABasicAnimation(keyPath: "position")
+        panelMover.isRemovedOnCompletion = false
+        panelMover.fillMode = kCAFillModeForwards
+        panelMover.duration = 0.6
+        panelMover.fromValue = NSValue(cgPoint: containerView.center)
+        panelMover.toValue = NSValue(cgPoint:
+            CGPoint(x: centerX, y: containerView.center.y))
+        panelMover.timingFunction = CAMediaTimingFunction(
+            name: kCAMediaTimingFunctionEaseOut)
+        panelMover.delegate = self
+        containerView.layer.add(panelMover, forKey: "panelMover")*/
+        
+        /*let logoMover = CABasicAnimation(keyPath: "position")
+        logoMover.isRemovedOnCompletion = false
+        logoMover.fillMode = kCAFillModeForwards
+        logoMover.duration = 0.5
+        logoMover.fromValue = NSValue(cgPoint: logoButton.center)
+        logoMover.toValue = NSValue(cgPoint:
+        CGPoint(x: -centerX, y: logoButton.center.y))
+        logoMover.timingFunction = CAMediaTimingFunction(
+        name: kCAMediaTimingFunctionEaseIn)
+        logoButton.layer.add(logoMover, forKey: "logoMover")*/
+        
+        
+        
+        let logoFade = CABasicAnimation(keyPath: "opacity")
+        logoFade.isRemovedOnCompletion = false
+        logoFade.fromValue = 1
+        logoFade.duration = 1
+        logoFade.toValue = 0
+        logoButton.layer.add(logoFade, forKey: "logoFade")
+        
+        logoButton.removeFromSuperview()
+        
+        let panelMover = CABasicAnimation(keyPath: "opacity")
+        panelMover.isRemovedOnCompletion = false
+        panelMover.fromValue = 0
+        panelMover.duration = 1
+        panelMover.toValue = 1
+        containerView.layer.add(panelMover, forKey: "panelMover")
+        
+        //containerView.layer.removeAllAnimations()
+
+        
+        /*logoRotator.isRemovedOnCompletion = false
+        logoRotator.fillMode = kCAFillModeForwards
+        logoRotator.duration = 0.5
+        logoRotator.fromValue = 0.0
+        logoRotator.toValue = -2 * M_PI
+        logoRotator.timingFunction = CAMediaTimingFunction(
+            name: kCAMediaTimingFunctionEaseIn)*/
+        
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        containerView.layer.removeAllAnimations()
+        
+        logoButton.layer.removeAllAnimations()
+        logoButton.removeFromSuperview()
+    }
   
   @IBAction func getLocation() {
     let authStatus = CLLocationManager.authorizationStatus()
@@ -66,6 +157,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     if authStatus == .denied || authStatus == .restricted {
       showLocationServicesDeniedAlert()
       return
+    }
+    
+    if logoVisible {
+        hideLogoView()
     }
     
     if updatingLocation {
@@ -92,6 +187,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     present(alert, animated: true, completion: nil)
   }
+    
+    var logoVisible = false
+    lazy var logoButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setBackgroundImage(UIImage(named: "Logo"), for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(getLocation),
+                         for: .touchUpInside)
+        button.center.x = self.view.bounds.midX
+        button.center.y = 220
+        return button
+    }()
   
   func updateLabels() {
     if let location = location {
@@ -109,6 +216,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
       } else {
         addressLabel.text = "No Address Found"
       }
+        
+        latitudeTextLabel.isHidden = false
+        longitudeTextLabel.isHidden = false
       
     } else {
       latitudeLabel.text = ""
@@ -129,9 +239,13 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
       } else if updatingLocation {
         statusMessage = "Searching..."
       } else {
-        statusMessage = "Tap 'Get My Location' to Start"
+        statusMessage = ""
+        showLogoView()
       }
       
+        latitudeTextLabel.isHidden = true
+        longitudeTextLabel.isHidden = true
+        
       messageLabel.text = statusMessage
     }
   }
@@ -168,10 +282,26 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   }
   
   func configureGetButton() {
+    let spinnerTag = 1000
+    
     if updatingLocation {
-      getButton.setTitle("Stop", for: .normal)
+        getButton.setTitle("Stop", for: .normal)
+        
+        if view.viewWithTag(spinnerTag) == nil {
+            let spinner = UIActivityIndicatorView(
+                activityIndicatorStyle: .white)
+            spinner.center = messageLabel.center
+            spinner.center.y += spinner.bounds.size.height/2 + 15
+            spinner.startAnimating()
+            spinner.tag = spinnerTag
+            containerView.addSubview(spinner)
+        }
     } else {
-      getButton.setTitle("Get My Location", for: .normal)
+        getButton.setTitle("Get My Location", for: .normal)
+        
+        if let spinner = view.viewWithTag(spinnerTag) {
+            spinner.removeFromSuperview()
+        }
     }
   }
   
