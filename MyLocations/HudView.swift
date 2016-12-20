@@ -31,12 +31,12 @@ class HudView: UIView {
         roundedRect.fill()
         
         // to add image to HUD
-        /*if let image = UIImage(named: "Checkmark") {
+        if let image = UIImage(named: "Checkmark") {
             let imagePoint = CGPoint(
                 x: center.x - round(image.size.width / 2),
                 y: center.y - round(image.size.height / 2) - boxHeight / 8)
             image.draw(at: imagePoint)
-        }*/
+        }
         
         let attribs = [ NSFontAttributeName: UIFont.systemFont(ofSize: 16),
                         NSForegroundColorAttributeName: UIColor.white ]

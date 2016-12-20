@@ -505,11 +505,148 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="rzr-wN-H6M" kind="relationship" relationship="viewControllers" id="R4j-DS-FLI"/>
                         <segue destination="hP8-Ji-STI" kind="relationship" relationship="viewControllers" id="64X-Gn-SS0"/>
+                        <segue destination="LoZ-8Z-lUz" kind="relationship" relationship="viewControllers" id="mJW-Yd-8zV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-356" y="474"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="sYu-Yh-T52">
+            <objects>
+                <viewController id="LoZ-8Z-lUz" customClass="AboutViewController" customModule="Location_Journal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KS9-lS-0or"/>
+                        <viewControllerLayoutGuide type="bottom" id="RqN-0O-nkU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6NY-6q-qey">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="UED-Wm-5a0">
+                                <rect key="frame" x="33" y="34" width="69" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by David Wang" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c5-EI-bM9">
+                                <rect key="frame" x="145" y="71" width="115" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hS5-xU-auF">
+                                <rect key="frame" x="33" y="128" width="254" height="269"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">MyPlaces helps you keep track of interesting places. If you come across a place you'd like to remember - a cool small coffee shop, a great photo spot, or even where you parked your car - just tag your location, add a quick note, and even attach a picture. It's quick and easy with MyPlaces.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyPlaces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUm-jV-cAy">
+                                <rect key="frame" x="165" y="42" width="74" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5I-E9-V0i">
+                                <rect key="frame" x="143" y="481" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Hello"/>
+                                <connections>
+                                    <action selector="customButton:" destination="LoZ-8Z-lUz" eventType="touchUpInside" id="xIV-Hq-tV9"/>
+                                    <segue destination="xQ2-Ad-Gx9" kind="show" id="Dhm-Rg-EiJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ah4-eA-RMX">
+                                <rect key="frame" x="33" y="443" width="227" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Build Number">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buildButton:" destination="LoZ-8Z-lUz" eventType="touchUpInside" id="VO8-1G-fKo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuX-M0-YEW">
+                                <rect key="frame" x="265" y="443" width="22" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IED-bL-Tw7">
+                                <rect key="frame" x="33" y="405" width="254" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Visit me at www.DavidWangDW.com"/>
+                                <connections>
+                                    <action selector="myWebsite:" destination="LoZ-8Z-lUz" eventType="touchUpInside" id="GAX-2w-9tM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="mA2-DI-hoB"/>
+                    <connections>
+                        <outlet property="customButtonView" destination="d5I-E9-V0i" id="nL1-JC-ROy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Qy-Or-RMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-352.5" y="1249.6478873239437"/>
+        </scene>
+        <!--Special View Controller-->
+        <scene sceneID="m5x-nl-v7N">
+            <objects>
+                <viewController id="xQ2-Ad-Gx9" customClass="SpecialViewController" customModule="Location_Journal" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4IV-od-AWJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Zj-ri-HcJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vge-Gd-Jem">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Core Squad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeH-C2-44i">
+                                <rect key="frame" x="115" y="490" width="90" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLs-Yv-bGb">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="a0P-XW-8Dr">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wXs-Fo-yze">
+                                            <connections>
+                                                <action selector="cancelScreenWithSender:" destination="xQ2-Ad-Gx9" id="BTC-CT-3hp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Michael" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-XD-LVM">
+                                <rect key="frame" x="40" y="75" width="240" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CoreSquad2" translatesAutoresizingMaskIntoConstraints="NO" id="sYr-a2-bhb">
+                                <rect key="frame" x="40" y="356" width="240" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CoreSquad" translatesAutoresizingMaskIntoConstraints="NO" id="VwZ-hG-afk">
+                                <rect key="frame" x="40" y="214" width="240" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Vt-EF-rDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444.375" y="1249.6478873239437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GHt-Tn-aLv">
@@ -531,8 +668,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CoreSquad" width="200" height="100"/>
+        <image name="CoreSquad2" width="200" height="100"/>
         <image name="Locations" width="30" height="30"/>
+        <image name="Logo" width="200" height="200"/>
         <image name="Map" width="30" height="30"/>
+        <image name="Michael" width="200" height="100"/>
         <image name="Tag" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
