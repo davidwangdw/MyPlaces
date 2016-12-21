@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		212F13291E08A9F200563EE2 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		212F132B1E08B08400563EE2 /* SpecialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialViewController.swift; sourceTree = "<group>"; };
-		7B289E341D3E090000AE718D /* Location Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B289E341D3E090000AE718D /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B289E371D3E090000AE718D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B289E391D3E090000AE718D /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		7B289E3E1D3E090000AE718D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 		7B289E2B1D3E090000AE718D = {
 			isa = PBXGroup;
 			children = (
-				7B289E361D3E090000AE718D /* Location Journal */,
+				7B289E361D3E090000AE718D /* MyPlaces */,
 				7B289E351D3E090000AE718D /* Products */,
 				7B90F1971D489753004E1FA5 /* Frameworks */,
 			);
@@ -76,12 +76,12 @@
 		7B289E351D3E090000AE718D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B289E341D3E090000AE718D /* Location Journal.app */,
+				7B289E341D3E090000AE718D /* MyPlaces.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7B289E361D3E090000AE718D /* Location Journal */ = {
+		7B289E361D3E090000AE718D /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
 				7B289E371D3E090000AE718D /* AppDelegate.swift */,
@@ -104,7 +104,7 @@
 				7B90F19A1D4898C5004E1FA5 /* MapViewController.swift */,
 				7B90F19C1D4907CD004E1FA5 /* UIImage+Resize.swift */,
 			);
-			name = "Location Journal";
+			name = MyPlaces;
 			path = MyLocations;
 			sourceTree = "<group>";
 		};
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B289E331D3E090000AE718D /* Location Journal */ = {
+		7B289E331D3E090000AE718D /* MyPlaces */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B289E481D3E090000AE718D /* Build configuration list for PBXNativeTarget "Location Journal" */;
+			buildConfigurationList = 7B289E481D3E090000AE718D /* Build configuration list for PBXNativeTarget "MyPlaces" */;
 			buildPhases = (
 				7B289E301D3E090000AE718D /* Sources */,
 				7B289E311D3E090000AE718D /* Frameworks */,
@@ -131,9 +131,9 @@
 			);
 			dependencies = (
 			);
-			name = "Location Journal";
+			name = MyPlaces;
 			productName = MyLocations;
-			productReference = 7B289E341D3E090000AE718D /* Location Journal.app */;
+			productReference = 7B289E341D3E090000AE718D /* MyPlaces.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -158,7 +158,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7B289E2F1D3E090000AE718D /* Build configuration list for PBXProject "Location Journal" */;
+			buildConfigurationList = 7B289E2F1D3E090000AE718D /* Build configuration list for PBXProject "MyPlaces" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -171,7 +171,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B289E331D3E090000AE718D /* Location Journal */,
+				7B289E331D3E090000AE718D /* MyPlaces */,
 			);
 		};
 /* End PBXProject section */
@@ -328,7 +328,7 @@
 				DEVELOPMENT_TEAM = 98YT4HPVK9;
 				INFOPLIST_FILE = MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DavidWang.MyLocations;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DavidWang.MyPlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -341,7 +341,7 @@
 				DEVELOPMENT_TEAM = 98YT4HPVK9;
 				INFOPLIST_FILE = MyLocations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.DavidWang.MyLocations;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DavidWang.MyPlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -350,7 +350,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7B289E2F1D3E090000AE718D /* Build configuration list for PBXProject "Location Journal" */ = {
+		7B289E2F1D3E090000AE718D /* Build configuration list for PBXProject "MyPlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B289E461D3E090000AE718D /* Debug */,
@@ -359,7 +359,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B289E481D3E090000AE718D /* Build configuration list for PBXNativeTarget "Location Journal" */ = {
+		7B289E481D3E090000AE718D /* Build configuration list for PBXNativeTarget "MyPlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B289E491D3E090000AE718D /* Debug */,

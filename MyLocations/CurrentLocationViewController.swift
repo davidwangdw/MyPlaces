@@ -18,6 +18,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var logoTop: UIImageView!
+    
   @IBOutlet weak var latitudeTextLabel: UILabel!
   @IBOutlet weak var longitudeTextLabel: UILabel!
   
@@ -63,6 +65,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if !logoVisible {
             logoVisible = true
             containerView.isHidden = true
+            logoTop.isHidden = true
             view.addSubview(logoButton)
         }
     }
@@ -80,6 +83,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         
         logoVisible = false
         containerView.isHidden = false
+        logoTop.isHidden = false
         //containerView.center.x = view.bounds.size.width * 2
         //containerView.center.y = 40 + containerView.bounds.size.height / 2
         
@@ -125,6 +129,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         panelMover.duration = 1
         panelMover.toValue = 1
         containerView.layer.add(panelMover, forKey: "panelMover")
+        logoTop.layer.add(panelMover, forKey: "panelMover")
         
         //containerView.layer.removeAllAnimations()
 

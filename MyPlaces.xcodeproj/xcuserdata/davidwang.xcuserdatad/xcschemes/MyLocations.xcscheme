@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B289E331D3E090000AE718D"
-               BuildableName = "Location Journal.app"
-               BlueprintName = "Location Journal"
-               ReferencedContainer = "container:Location Journal.xcodeproj">
+               BuildableName = "MyPlaces.app"
+               BlueprintName = "MyPlaces"
+               ReferencedContainer = "container:MyPlaces.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B289E331D3E090000AE718D"
-            BuildableName = "Location Journal.app"
-            BlueprintName = "Location Journal"
-            ReferencedContainer = "container:Location Journal.xcodeproj">
+            BuildableName = "MyPlaces.app"
+            BlueprintName = "MyPlaces"
+            ReferencedContainer = "container:MyPlaces.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B289E331D3E090000AE718D"
-            BuildableName = "Location Journal.app"
-            BlueprintName = "Location Journal"
-            ReferencedContainer = "container:Location Journal.xcodeproj">
+            BuildableName = "MyPlaces.app"
+            BlueprintName = "MyPlaces"
+            ReferencedContainer = "container:MyPlaces.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B289E331D3E090000AE718D"
-            BuildableName = "Location Journal.app"
-            BlueprintName = "Location Journal"
-            ReferencedContainer = "container:Location Journal.xcodeproj">
+            BuildableName = "MyPlaces.app"
+            BlueprintName = "MyPlaces"
+            ReferencedContainer = "container:MyPlaces.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
