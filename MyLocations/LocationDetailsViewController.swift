@@ -1,6 +1,7 @@
 import UIKit
 import CoreLocation
 import CoreData
+import MapKit
 
 private let dateFormatter: DateFormatter = {
   let formatter = DateFormatter()
@@ -75,8 +76,8 @@ class LocationDetailsViewController: UITableViewController {
     descriptionTextView.text = descriptionText
     categoryLabel.text = categoryName
     
-    latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
-    longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
+    latitudeLabel.text = String(format: "%.5f", coordinate.latitude)
+    longitudeLabel.text = String(format: "%.5f", coordinate.longitude)
     
     if let placemark = placemark {
       addressLabel.text = string(from: placemark)
@@ -91,8 +92,11 @@ class LocationDetailsViewController: UITableViewController {
     gestureRecognizer.cancelsTouchesInView = false
     tableView.addGestureRecognizer(gestureRecognizer)
     
+    
+    
     listenForBackgroundNotification()
   }
+
 
   func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
     let point = gestureRecognizer.location(in: tableView)
@@ -200,6 +204,24 @@ class LocationDetailsViewController: UITableViewController {
     categoryName = controller.selectedCategoryName
     categoryLabel.text = categoryName
   }
+    
+    @IBAction func openMapForPlace() {
+        
+        let latitude:CLLocationDegrees =  coordinate.latitude
+        let longitude:CLLocationDegrees =  coordinate.longitude
+        
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.openInMaps(launchOptions: options)
+        
+    }
   
   // MARK: - UITableViewDelegate
   

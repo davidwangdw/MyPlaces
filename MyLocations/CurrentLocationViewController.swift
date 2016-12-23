@@ -207,8 +207,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   
   func updateLabels() {
     if let location = location {
-      latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
-      longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
+      latitudeLabel.text = String(format: "%.5f", location.coordinate.latitude)
+      longitudeLabel.text = String(format: "%.5f", location.coordinate.longitude)
       tagButton.isHidden = false
       messageLabel.text = ""
       
