@@ -11,11 +11,12 @@ class CategoryPickerViewController: UITableViewController {
     var selectedCategoryName = ""
     let categories = [
         "No Category",
-        "Photography Spot",
         "Come Back Later",
-        "Shop",
+        "Friends",
+        "Photography Spot",
         "Resturant",
-        "Friends"]
+        "Shop",
+        "To Do"]
     var selectedIndexPath = IndexPath()
     override func viewDidLoad() {
         super.viewDidLoad()
