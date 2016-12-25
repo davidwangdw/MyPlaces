@@ -519,6 +519,9 @@
                         </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="table" destination="0ON-Mg-XcQ" id="I75-Er-ivG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTw-V6-hCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iY0-BE-rjI" userLabel="Exit" sceneMemberID="exit"/>

@@ -9,30 +9,74 @@
 import UIKit
 class CategoryPickerViewController: UITableViewController {
     
+    @IBOutlet var table: UITableView!
+    
     //using a UserDefaults object to store the data array for categories
-    let categoryDefaults = UserDefaults.standard
     
     //default categories, will be able to change/edit later
-    var categories = [
+    
+    /*var categoriesList: [String] = [
         "No Category",
         "Come Back Later",
         "Friends",
         "Photography Spot",
         "Resturant",
         "Shop",
-        "To Do"]
+        "To Do"]*/
+    
+    var categoriesList: [String] = [
+    "No Category"]
+    
   
     @IBAction func addCategory(_ sender: Any) {
+        self.tableView.reloadData()
         let alert = UIAlertController(title: "Add Category", message: "Enter a category", preferredStyle: .alert)
         //Add the text input field
         alert.addTextField { (textField) in textField.text = "" }
         
         //Grab the value from the text field
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            
+            
             let textField = alert?.textFields![0]
             
-            //add value to categories array
-            print("Text field: \(textField?.text)")
+            let itemsObject = UserDefaults.standard.object(forKey: "categoriesList")
+            
+            var items:[String]
+            
+            if let tempItems = itemsObject as? [String] {
+                
+                items = tempItems
+                
+                items.append((textField?.text!)!)
+                
+            } else {
+                
+                items = ["No Category"]
+                items.append((textField?.text!)!)
+                
+            }
+            
+            UserDefaults.standard.set(items, forKey: "categoriesList")
+            
+            self.table.reloadData()
+            
+            //this is a little bit of a convulated way to save to the userdefaults
+            //var arrayCategories = UserDefaults.standard.array(forKey: "categoriesList")
+            
+            /*if var myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String] {
+                myArray.append((textField?.text!)!)
+                //arrayCategories = myArray
+                UserDefaults.standard.set(myArray, forKey:"categoriesList" )
+            }*/
+            
+            //UserDefaults.standard.set(myArray, forKey:"categoriesList" )
+            self.categoriesList.append((textField?.text!)!)
+
+            print(self.categoriesList)
+            self.table.reloadData()
+            //print("\(UserDefaults.standard.value(forKey: "categoriesList")!)")
+            
         }))
         
         //add cancel button
@@ -42,6 +86,8 @@ class CategoryPickerViewController: UITableViewController {
         
         
         self.present(alert, animated: true, completion: nil)
+        
+        
     }
     
     //default category
@@ -52,39 +98,75 @@ class CategoryPickerViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryDefaults.set(categories, forKey: "CategoriesArray")
+        
+        //UserDefaults.standard.set(categoriesList, forKey:"categoriesList" )
+        
         self.navigationController!.setToolbarHidden(false, animated: true)
-        for i in 0..<categories.count {
-            if categories[i] == selectedCategoryName {
+        
+        //let myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String]
+        
+        /*for i in 0..<myArray!.count {
+            if myArray?[i] == selectedCategoryName {
                 selectedIndexPath = IndexPath(row: i, section: 0)
                 break
             }
-        }
+        }*/
+        
+        for i in 0..<categoriesList.count {
+         if categoriesList[i] == selectedCategoryName {
+         selectedIndexPath = IndexPath(row: i, section: 0)
+         break
+         }
+         }
+        
+
     }
     // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        /*let myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String]
+        return myArray!.count*/
+        
+        return categoriesList.count
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let itemsObject = UserDefaults.standard.object(forKey: "categoriesList")
+        
+        
+        if let tempItems = itemsObject as? [String] {
+            
+            categoriesList = tempItems
+            
+        }
+        
+        table.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String]
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell", for: indexPath)
-        let categoryName = categories[indexPath.row]
+        //let categoryName = myArray?[indexPath.row]
+        let categoryName = categoriesList[indexPath.row]
         cell.textLabel!.text = categoryName
         if categoryName == selectedCategoryName {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
+        //print(myArray)
         return cell
 }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //let myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String]
         if segue.identifier == "PickedCategory" {
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell) {
-                selectedCategoryName = categories[indexPath.row]
+                //selectedCategoryName = (myArray?[indexPath.row])!
+                selectedCategoryName = categoriesList[indexPath.row]
             }
         }
     }
@@ -119,4 +201,19 @@ class CategoryPickerViewController: UITableViewController {
             }
         }
     }*/
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    if editingStyle == UITableViewCellEditingStyle.delete {
+    
+    categoriesList.remove(at: indexPath.row)
+    
+    table.reloadData()
+    
+    UserDefaults.standard.set(categoriesList, forKey: "categoriesList")
+    
+    }
+    
+    }
+
 }

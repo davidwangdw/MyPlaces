@@ -333,7 +333,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
   
     func didTimeOut() {
-        print("*** Time out")
+        //print("*** Time out")
     
         if location == nil {
             stopLocationManager()
@@ -349,7 +349,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   // MARK: - CLLocationManagerDelegate
   
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("didFailWithError \(error)")
+        //print("didFailWithError \(error)")
     
         if (error as NSError).code == CLError.locationUnknown.rawValue {
             return
@@ -364,7 +364,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
-        print("didUpdateLocations \(newLocation)")
+        //print("didUpdateLocations \(newLocation)")
     
         if newLocation.timestamp.timeIntervalSinceNow < -5 {
             return
@@ -387,7 +387,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             updateLabels()
       
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
-                print("*** We're done!")
+                //print("*** We're done!")
                 stopLocationManager()
                 configureGetButton()
         
@@ -397,14 +397,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             }
       
             if !performingReverseGeocoding {
-                print("*** Going to geocode")
+                //print("*** Going to geocode")
         
                 performingReverseGeocoding = true
         
                 geocoder.reverseGeocodeLocation(newLocation, completionHandler: {
                     placemarks, error in
           
-                    print("*** Found placemarks: \(placemarks), error: \(error)")
+                    //print("*** Found placemarks: \(placemarks), error: \(error)")
           
                     self.lastGeocodingError = error
                     if error == nil, let p = placemarks, !p.isEmpty {
@@ -420,7 +420,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else if distance < 1 {
             let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
             if timeInterval > 10 {
-                print("*** Force done!")
+                //print("*** Force done!")
                 stopLocationManager()
                 updateLabels()
                 configureGetButton()
