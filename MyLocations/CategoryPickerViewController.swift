@@ -8,8 +8,12 @@
 
 import UIKit
 class CategoryPickerViewController: UITableViewController {
-    var selectedCategoryName = ""
-    let categories = [
+    
+    //using a UserDefaults object to store the data array for categories
+    let categoryDefaults = UserDefaults.standard
+    
+    //default categories, will be able to change/edit later
+    var categories = [
         "No Category",
         "Come Back Later",
         "Friends",
@@ -17,9 +21,39 @@ class CategoryPickerViewController: UITableViewController {
         "Resturant",
         "Shop",
         "To Do"]
+  
+    @IBAction func addCategory(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Category", message: "Enter a category", preferredStyle: .alert)
+        //Add the text input field
+        alert.addTextField { (textField) in textField.text = "" }
+        
+        //Grab the value from the text field
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            
+            //add value to categories array
+            print("Text field: \(textField?.text)")
+        }))
+        
+        //add cancel button
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+         // ...
+         })
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //default category
+    var selectedCategoryName = ""
+
     var selectedIndexPath = IndexPath()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryDefaults.set(categories, forKey: "CategoriesArray")
+        self.navigationController!.setToolbarHidden(false, animated: true)
         for i in 0..<categories.count {
             if categories[i] == selectedCategoryName {
                 selectedIndexPath = IndexPath(row: i, section: 0)
@@ -68,4 +102,21 @@ class CategoryPickerViewController: UITableViewController {
             selectedIndexPath = indexPath
         }
     }
+    
+    //implementing swipe to delete function
+    /*override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let location = fetchedResultsController.object(at: indexPath)
+            location.removePhotoFile()
+            managedObjectContext.delete(location)
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+        }
+    }*/
 }

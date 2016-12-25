@@ -2,8 +2,6 @@
 //  Location+CoreDataProperties.swift
 //  MyLocations
 //
-//  Created by Matthijs on 25/07/2016.
-//  Copyright © 2016 Razeware. All rights reserved.
 //
 
 import Foundation

@@ -11,6 +11,7 @@ import Dispatch
 
 let MyManagedObjectContextSaveDidFailNotification = Notification.Name(
     rawValue: "MyManagedObjectContextSaveDidFailNotification")
+
 func fatalCoreDataError(_ error: Error) {
     print("*** Fatal error: \(error)")
     NotificationCenter.default.post(
