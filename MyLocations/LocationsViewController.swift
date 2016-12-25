@@ -3,33 +3,37 @@ import CoreData
 import CoreLocation
 
 class LocationsViewController: UITableViewController {
-  var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext!
+    
+    
+    @IBAction func filterButton(_ sender: Any) {
+    }
 
-  lazy var fetchedResultsController: NSFetchedResultsController<Location> = {
-    let fetchRequest = NSFetchRequest<Location>()
+    lazy var fetchedResultsController: NSFetchedResultsController<Location> = {
+        let fetchRequest = NSFetchRequest<Location>()
     
-    let entity = Location.entity()
-    fetchRequest.entity = entity
+        let entity = Location.entity()
+        fetchRequest.entity = entity
     
-    let sortDescriptor1 = NSSortDescriptor(key: "category", ascending: true)
-    let sortDescriptor2 = NSSortDescriptor(key: "date", ascending: true)
-    fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        let sortDescriptor1 = NSSortDescriptor(key: "category", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
     
-    fetchRequest.fetchBatchSize = 20
+        fetchRequest.fetchBatchSize = 20
     
-    let fetchedResultsController = NSFetchedResultsController(
-      fetchRequest: fetchRequest,
-      managedObjectContext: self.managedObjectContext,
-      sectionNameKeyPath: "category",
-      cacheName: "Locations")
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.managedObjectContext,
+            sectionNameKeyPath: "category",
+            cacheName: "Locations")
 
-    fetchedResultsController.delegate = self
-    return fetchedResultsController
-  }()
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
 
-  deinit {
-    fetchedResultsController.delegate = nil
-  }
+    deinit {
+        fetchedResultsController.delegate = nil
+    }
   
   override func viewDidLoad() {
     super.viewDidLoad()

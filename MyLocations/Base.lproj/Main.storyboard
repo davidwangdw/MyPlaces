@@ -399,7 +399,13 @@
                             <outlet property="delegate" destination="sVk-SU-7Kd" id="Ywg-Vc-bHy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Locations" id="tX3-ZK-ud2"/>
+                    <navigationItem key="navigationItem" title="Locations" id="tX3-ZK-ud2">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Filter" id="11r-GO-Tsp">
+                            <connections>
+                                <action selector="filterButton:" destination="sVk-SU-7Kd" id="gui-AT-s06"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3h2-N2-YXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
