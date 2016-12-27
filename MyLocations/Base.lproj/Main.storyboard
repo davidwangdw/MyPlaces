@@ -400,12 +400,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Locations" id="tX3-ZK-ud2">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Filter" id="11r-GO-Tsp">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="11r-GO-Tsp">
                             <connections>
                                 <action selector="filterButton:" destination="sVk-SU-7Kd" id="gui-AT-s06"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="table" destination="9dL-hR-1u5" id="ily-BI-cYW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3h2-N2-YXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -619,7 +622,7 @@
                                     <action selector="buildButton:" destination="LoZ-8Z-lUz" eventType="touchUpInside" id="VO8-1G-fKo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.91" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuX-M0-YEW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.94" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuX-M0-YEW">
                                 <rect key="frame" x="229" y="443" width="58" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

@@ -99,6 +99,9 @@ class CategoryPickerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        table.reloadData()
+
+        
         //UserDefaults.standard.set(categoriesList, forKey:"categoriesList" )
         
         self.navigationController!.setToolbarHidden(false, animated: true)
