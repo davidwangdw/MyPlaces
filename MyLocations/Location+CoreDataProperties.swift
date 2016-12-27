@@ -1,9 +1,3 @@
-//
-//  Location+CoreDataProperties.swift
-//  MyLocations
-//
-//
-
 import Foundation
 import CoreData
 import CoreLocation

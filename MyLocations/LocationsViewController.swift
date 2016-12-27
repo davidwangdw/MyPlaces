@@ -20,6 +20,8 @@ class LocationsViewController: UITableViewController {
         
         self.table.reloadData()
         
+        //code to try and filter the data
+        
         /*ac.addAction(UIAlertAction(title: "Show hello category", style: .default) { [unowned self] _ in
             self.fetchedResultsController.predicate = NSPredicate(format: "category CONTAINS[c] 'hello'")
             self.performFetch()

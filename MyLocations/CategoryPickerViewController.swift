@@ -1,11 +1,3 @@
-//
-//  CategoryPickerViewController.swift
-//  Location Journal
-//
-//  Created by David Wang on 12/15/16.
-//  Copyright © 2016 David Wang. All rights reserved.
-//
-
 import UIKit
 class CategoryPickerViewController: UITableViewController {
     
@@ -14,15 +6,6 @@ class CategoryPickerViewController: UITableViewController {
     //using a UserDefaults object to store the data array for categories
     
     //default categories, will be able to change/edit later
-    
-    /*var categoriesList: [String] = [
-        "No Category",
-        "Come Back Later",
-        "Friends",
-        "Photography Spot",
-        "Resturant",
-        "Shop",
-        "To Do"]*/
     
     var categoriesList: [String] = [
     "No Category"]
@@ -61,21 +44,10 @@ class CategoryPickerViewController: UITableViewController {
             
             self.table.reloadData()
             
-            //this is a little bit of a convulated way to save to the userdefaults
-            //var arrayCategories = UserDefaults.standard.array(forKey: "categoriesList")
-            
-            /*if var myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String] {
-                myArray.append((textField?.text!)!)
-                //arrayCategories = myArray
-                UserDefaults.standard.set(myArray, forKey:"categoriesList" )
-            }*/
-            
-            //UserDefaults.standard.set(myArray, forKey:"categoriesList" )
             self.categoriesList.append((textField?.text!)!)
 
             print(self.categoriesList)
             self.table.reloadData()
-            //print("\(UserDefaults.standard.value(forKey: "categoriesList")!)")
             
         }))
         
@@ -97,29 +69,18 @@ class CategoryPickerViewController: UITableViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         table.reloadData()
-
-        
-        //UserDefaults.standard.set(categoriesList, forKey:"categoriesList" )
         
         self.navigationController!.setToolbarHidden(false, animated: true)
         
-        //let myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String]
-        
-        /*for i in 0..<myArray!.count {
-            if myArray?[i] == selectedCategoryName {
+        for i in 0..<categoriesList.count {
+            if categoriesList[i] == selectedCategoryName {
                 selectedIndexPath = IndexPath(row: i, section: 0)
                 break
             }
-        }*/
-        
-        for i in 0..<categoriesList.count {
-         if categoriesList[i] == selectedCategoryName {
-         selectedIndexPath = IndexPath(row: i, section: 0)
-         break
-         }
          }
         
 
@@ -149,8 +110,7 @@ class CategoryPickerViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String]
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell( withIdentifier: "Cell", for: indexPath)
         //let categoryName = myArray?[indexPath.row]
         let categoryName = categoriesList[indexPath.row]
         cell.textLabel!.text = categoryName
@@ -161,7 +121,7 @@ class CategoryPickerViewController: UITableViewController {
         }
         //print(myArray)
         return cell
-}
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //let myArray = UserDefaults.standard.object(forKey: "categoriesList") as? [String]
@@ -209,13 +169,13 @@ class CategoryPickerViewController: UITableViewController {
     
     if editingStyle == UITableViewCellEditingStyle.delete {
     
-    categoriesList.remove(at: indexPath.row)
+        categoriesList.remove(at: indexPath.row)
     
-    table.reloadData()
+        table.reloadData()
     
-    UserDefaults.standard.set(categoriesList, forKey: "categoriesList")
+        UserDefaults.standard.set(categoriesList, forKey: "categoriesList")
     
-    }
+        }
     
     }
 

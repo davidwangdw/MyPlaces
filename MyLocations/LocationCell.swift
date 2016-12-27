@@ -1,9 +1,3 @@
-//
-//  LocationCell.swift
-//  MyLocations
-//
-
-
 import UIKit
 
 class LocationCell: UITableViewCell {

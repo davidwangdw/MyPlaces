@@ -71,11 +71,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func hideLogoView() {
-        
-        
-        /*logoVisible = false
-        containerView.isHidden = false
-        logoButton.removeFromSuperview()*/
 
         // to animate logo
         
@@ -84,35 +79,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         logoVisible = false
         containerView.isHidden = false
         logoTop.isHidden = false
-        //containerView.center.x = view.bounds.size.width * 2
-        //containerView.center.y = 40 + containerView.bounds.size.height / 2
-        
-        //let centerX = view.bounds.midX
-        
-        /*let panelMover = CABasicAnimation(keyPath: "position")
-        panelMover.isRemovedOnCompletion = false
-        panelMover.fillMode = kCAFillModeForwards
-        panelMover.duration = 0.6
-        panelMover.fromValue = NSValue(cgPoint: containerView.center)
-        panelMover.toValue = NSValue(cgPoint:
-            CGPoint(x: centerX, y: containerView.center.y))
-        panelMover.timingFunction = CAMediaTimingFunction(
-            name: kCAMediaTimingFunctionEaseOut)
-        panelMover.delegate = self
-        containerView.layer.add(panelMover, forKey: "panelMover")*/
-        
-        /*let logoMover = CABasicAnimation(keyPath: "position")
-        logoMover.isRemovedOnCompletion = false
-        logoMover.fillMode = kCAFillModeForwards
-        logoMover.duration = 0.5
-        logoMover.fromValue = NSValue(cgPoint: logoButton.center)
-        logoMover.toValue = NSValue(cgPoint:
-        CGPoint(x: -centerX, y: logoButton.center.y))
-        logoMover.timingFunction = CAMediaTimingFunction(
-        name: kCAMediaTimingFunctionEaseIn)
-        logoButton.layer.add(logoMover, forKey: "logoMover")*/
-        
-        
         
         let logoFade = CABasicAnimation(keyPath: "opacity")
         logoFade.isRemovedOnCompletion = false
@@ -130,17 +96,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         panelMover.toValue = 1
         containerView.layer.add(panelMover, forKey: "panelMover")
         logoTop.layer.add(panelMover, forKey: "panelMover")
-        
-        //containerView.layer.removeAllAnimations()
 
-        
-        /*logoRotator.isRemovedOnCompletion = false
-        logoRotator.fillMode = kCAFillModeForwards
-        logoRotator.duration = 0.5
-        logoRotator.fromValue = 0.0
-        logoRotator.toValue = -2 * M_PI
-        logoRotator.timingFunction = CAMediaTimingFunction(
-            name: kCAMediaTimingFunctionEaseIn)*/
         
     }
     
@@ -333,7 +289,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
   
     func didTimeOut() {
-        //print("*** Time out")
     
         if location == nil {
             stopLocationManager()
@@ -349,8 +304,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   // MARK: - CLLocationManagerDelegate
   
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        //print("didFailWithError \(error)")
-    
+
         if (error as NSError).code == CLError.locationUnknown.rawValue {
             return
         }
@@ -364,7 +318,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
-        //print("didUpdateLocations \(newLocation)")
     
         if newLocation.timestamp.timeIntervalSinceNow < -5 {
             return
@@ -387,7 +340,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             updateLabels()
       
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
-                //print("*** We're done!")
                 stopLocationManager()
                 configureGetButton()
         
@@ -404,8 +356,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 geocoder.reverseGeocodeLocation(newLocation, completionHandler: {
                     placemarks, error in
           
-                    //print("*** Found placemarks: \(placemarks), error: \(error)")
-          
                     self.lastGeocodingError = error
                     if error == nil, let p = placemarks, !p.isEmpty {
                         self.placemark = p.last!
@@ -420,7 +370,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else if distance < 1 {
             let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
             if timeInterval > 10 {
-                //print("*** Force done!")
                 stopLocationManager()
                 updateLabels()
                 configureGetButton()

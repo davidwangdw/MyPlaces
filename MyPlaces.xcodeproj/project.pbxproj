@@ -84,6 +84,7 @@
 		7B289E361D3E090000AE718D /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
+				212F13291E08A9F200563EE2 /* AboutViewController.swift */,
 				7B289E371D3E090000AE718D /* AppDelegate.swift */,
 				7B289E401D3E090000AE718D /* Assets.xcassets */,
 				7BEB181F1D40D081006C8E57 /* CategoryPickerViewController.swift */,
@@ -99,9 +100,8 @@
 				7BEB181D1D40AA51006C8E57 /* LocationDetailsViewController.swift */,
 				7B90F1931D474837004E1FA5 /* LocationsViewController.swift */,
 				7B289E3D1D3E090000AE718D /* Main.storyboard */,
-				212F132B1E08B08400563EE2 /* SpecialViewController.swift */,
-				212F13291E08A9F200563EE2 /* AboutViewController.swift */,
 				7B90F19A1D4898C5004E1FA5 /* MapViewController.swift */,
+				212F132B1E08B08400563EE2 /* SpecialViewController.swift */,
 				7B90F19C1D4907CD004E1FA5 /* UIImage+Resize.swift */,
 			);
 			name = MyPlaces;
